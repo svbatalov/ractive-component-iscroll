@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link href="/iscroll.css" rel="stylesheet">
+        <style type="text/css">
+            #myscroll {
+                height: 30em;
+                width: 30em;
+                border: 1px solid black;
+            }
+            .odd { background: #ccc; }
+            .even { background: white; }
+        </style>
+        <script id="template" type="text/ractive">
+            <h3>
+                See what happens when the box overflows
+            </h3>
+            <Scroll id="myscroll" opts="{{scrollOpts}}">
+                {{#items:i}}
+                    <div class='{{i%2 ? "odd" : "even"}}'>
+                        {{i}}: {{.}}
+                    </div>
+                {{/}}
+            </Scroll>
+        </script>
+    </head>
+    <body>
+        <script src="/bundle.js"></script>
+    </body>
+</html>
