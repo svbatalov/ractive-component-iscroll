@@ -1,5 +1,5 @@
 # ractive-component-iscroll
-Ractive component wrapping [IScroll](http://iscrolljs.com/) library.
+[Ractive](http://www.ractivejs.org/) component wrapping [IScroll](http://iscrolljs.com/) library.
 
 # Usage
 
@@ -14,7 +14,7 @@ Ractive component wrapping [IScroll](http://iscrolljs.com/) library.
 
 3. Define height and/or width for `.myscroll` or `.scroll-wrapper` (a class assigned to each `<Scroll>`)
 
-4. Require comopnent in your app:
+4. Require component in your app:
 ```js
 require('ractive-component-iscroll');
 ```
