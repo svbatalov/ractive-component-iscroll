@@ -22,7 +22,7 @@ var fs = require('fs');
  * 3) Define height and/or width for .myscroll or .scroll-wrapper
  * (a class assigned to each <Scroll>)
  *
- * Changing `opts' attribute causes re-creation of iscoll instance.
+ * Changing `opts' attribute causes re-creation of iscroll instance.
  */
 
 var defaultOpts = {
