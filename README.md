@@ -2,19 +2,18 @@
 [Ractive](http://www.ractivejs.org/) component wrapping [IScroll](http://iscrolljs.com/) library.
 
 # Usage
-0. `npm install ractive-component-iscroll`
-1. Include CSS for `.scroll-wrapper` and `.scroller` (see iscroll.css for example)
-2. Wrap scrollable part of your template into `<Scroll>` tags (all attributes are optional):
+1. `npm install ractive-component-iscroll`
+2. Include CSS for `.scroll-wrapper` and `.scroller` (see iscroll.css for example)
+3. Wrap scrollable part of your template into `<Scroll>` tags (all attributes are optional):
 
 ```html
    <Scroll class="myscroll" id="..." opts='{scrollbars: false}'>
        ..template..
    </Scroll>
 ```
+4. Define height and/or width for `.myscroll` or `.scroll-wrapper` (a class assigned to each `<Scroll>`)
 
-3. Define height and/or width for `.myscroll` or `.scroll-wrapper` (a class assigned to each `<Scroll>`)
-
-4. Require component in your app:
+5. Require component in your app:
 ```js
 require('ractive-component-iscroll');
 ```
