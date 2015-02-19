@@ -6,7 +6,7 @@
 2. Include CSS for `.scroll-wrapper` and `.scroller` (see iscroll.css for example)
 3. Wrap scrollable part of your template into `<Scroll>` tags (all attributes are optional):
 
-```html
+    ```html
    <Scroll class="myscroll" id="..." opts='{scrollbars: false}'>
        ..template..
    </Scroll>
