@@ -14,10 +14,10 @@
 4. Define height and/or width for `.myscroll` or `.scroll-wrapper` (a class assigned to each `<Scroll>`)
 
 5. Require component in your app:
-```js
-require('ractive-component-iscroll');
-```
-This will add `Scroll` to `Ractive.components`.
+    ```js
+    require('ractive-component-iscroll');
+    ```
+    This will add `Scroll` to `Ractive.components`.
 
 # Notes
 
