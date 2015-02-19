@@ -2,7 +2,7 @@
 [Ractive](http://www.ractivejs.org/) component wrapping [IScroll](http://iscrolljs.com/) library.
 
 # Usage
-
+0. `npm install ractive-component-iscroll`
 1. Include CSS for `.scroll-wrapper` and `.scroller` (see iscroll.css for example)
 2. Wrap scrollable part of your template into `<Scroll>` tags (all attributes are optional):
 
@@ -35,7 +35,7 @@ Please let me know if you know how to fix this.
 See my [question](http://stackoverflow.com/questions/28559626/how-do-i-know-when-components-dom-is-updated-and-finished-transitions-in-ractiv)
 on stackoverflow for more info.
 
-IScroll inhibits `click` events and can emit `tap` events.
+IScroll inhibits `click` events and can emit `tap` events instead.
 
 Some iscroll options do not work (e.g. `fadeScrollbars: true`), don't know why yet.
 
