@@ -1,7 +1,8 @@
 var Ractive = require('ractive');
 var IScroll = require('iscroll-browserify');
 var extend = require('xtend');
-var fs = require('fs');
+
+var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver || null;
 
 /**
  * @description
@@ -30,33 +31,19 @@ var defaultOpts = {
   mouseWheel: true,
   scrollbars: true,
   debounceTimeout: 10,
+  obs: {
+    childList: true,
+    subtree: true,
+    characterData: true,
+  }
 };
 
 var template =
-  "<div class='scroll-wrapper {{class}}' id='{{id}}' intro='updateScroll'>" +
+"<div class='scroll-wrapper {{class}}' id='{{id}}' intro='updateScroll'>" +
   "    <div class='scroller'>" +
   "        {{yield}}" +
   "    </div>" +
   "</div>";
-
-// Monkey patch Ractive.set to that
-// it emits custom `set` event with
-// the returned promise as argument.
-//
-// This allows to wait for transitions to finish.
-var mutators = ['set', 'shift', 'unshift', 'push', 'pop'];
-
-mutators.forEach(function (meth) {
-
-  var old = Ractive.prototype[meth];
-  Ractive.prototype[meth] = function () {
-    var ret = old.apply( this, arguments);
-    this.fire(meth, ret);
-    return ret;
-  };
-
-});
-
 
 // Component definition
 var Scroll = Ractive.extend({
@@ -68,7 +55,6 @@ var Scroll = Ractive.extend({
     updateScroll: function (t) {
       var self  = this;
       this.node = t.node;
-
       var userOpts = this.get('opts');
       this.opts = extend(defaultOpts, userOpts);
 
@@ -87,14 +73,16 @@ var Scroll = Ractive.extend({
       self.opts.onRefresh && self.opts.onRefresh(self.s);
     }, self.opts.debounceTimeout);
 
-    // One level deep, unfortunately
-    this._parent.on(mutators.join(' '), function (ret) {
-      ret.then(update);
-    });
+    if(MutationObserver) {
+      this.obs = new MutationObserver(update);
+      this.obs.observe(this.node, this.opts.obs);
+    } else {
+      console.warn('Scroll: Your browser does not support MutationObserver.')
+    }
 
     this.on('teardown', function () {
       this.s.destroy();
-      this.s = null;
+      this.obs && this.obs.disconnect();
     });
 
     this.observe('opts', function (n) {

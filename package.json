@@ -1,6 +1,6 @@
 {
   "name": "ractive-component-iscroll",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ractive component wrapping IScroll library.",
   "main": "index.js",
   "scripts": {
